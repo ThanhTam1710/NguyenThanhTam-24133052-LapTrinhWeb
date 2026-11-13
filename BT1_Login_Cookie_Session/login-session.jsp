@@ -10,9 +10,9 @@
     <p>Sinh viên: <b>Nguyễn Thanh Tâm</b> - MSSV: <b>24133052</b></p>
     <form action="${pageContext.request.contextPath}/login-session" method="post"> 
         <label>UserName:</label>
-        <input type="text" name="username" placeholder="thanhtam hoặc tamnt" required><br><br>
+        <input type="text" name="username" placeholder="syber096 hoặc thanhtam" required><br><br>
         <label>Password:</label>
-        <input type="password" name="password" placeholder="123" required><br><br>
+        <input type="password" name="password" placeholder="thanhtam123 hoặc 123" required><br><br>
         <input type="submit" value="Login"> 
     </form>
 </body>

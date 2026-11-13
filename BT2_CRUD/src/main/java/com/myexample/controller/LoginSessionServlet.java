@@ -24,8 +24,11 @@ public class LoginSessionServlet extends HttpServlet {
         String user = req.getParameter("username");
         String pass = req.getParameter("password");
 
-        // Tài khoản sinh viên Nguyễn Thanh Tâm: thanhtam / 123 hoặc tamnt / 123
-        if (("thanhtam".equalsIgnoreCase(user) || "tamnt".equalsIgnoreCase(user) || "admin".equalsIgnoreCase(user)) && "123".equals(pass)) {
+        // Tài khoản sinh viên Nguyễn Thanh Tâm: syber096 / thanhtam123 hoặc thanhtam / 123
+        boolean isValid = ("syber096".equalsIgnoreCase(user) && "thanhtam123".equals(pass))
+                || (("thanhtam".equalsIgnoreCase(user) || "tamnt".equalsIgnoreCase(user) || "admin".equalsIgnoreCase(user)) && "123".equals(pass));
+
+        if (isValid) {
             HttpSession session = req.getSession();
             session.setAttribute("name", user);
             

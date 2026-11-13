@@ -41,6 +41,9 @@ GO
 
 -- Tài khoản mẫu cho Nguyễn Thanh Tâm (admin: roleid = 1)
 INSERT INTO [User](email, username, fullname, password, avatar, roleid, phone, createdDate)
+VALUES ('syber096@gmail.com', 'syber096', N'Nguyễn Thanh Tâm', 'thanhtam123', NULL, 1, '0987654321', GETDATE());
+
+INSERT INTO [User](email, username, fullname, password, avatar, roleid, phone, createdDate)
 VALUES ('thanhtam@gmail.com', 'thanhtam', N'Nguyễn Thanh Tâm', '123', NULL, 1, '0987654321', GETDATE());
 
 INSERT INTO [User](email, username, fullname, password, avatar, roleid, phone, createdDate)

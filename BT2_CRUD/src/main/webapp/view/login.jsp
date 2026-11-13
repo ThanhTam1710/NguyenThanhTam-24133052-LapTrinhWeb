@@ -83,9 +83,9 @@
     </form>
 
     <div class="account-hint">
-        Tài khoản mẫu:<br>
-        - Username: <b>thanhtam</b> hoặc <b>admin</b><br>
-        - Password: <b>123</b>
+        Tài khoản kiểm thử:<br>
+        1. Username: <b>syber096</b> | Password: <b>thanhtam123</b><br>
+        2. Username: <b>thanhtam</b> | Password: <b>123</b>
     </div>
 
     <a href="${pageContext.request.contextPath}/home" class="back-link">&larr; Quay lại Trang Chủ</a>

@@ -61,11 +61,21 @@ NguyenThanhTam-24133052-LapTrinhWeb/
 
 ---
 
+### 🔑 Danh sách tài khoản đăng nhập & kiểm thử (Dành cho Giảng viên):
+
+| STT | Tên tài khoản (Username) | Mật khẩu (Password) | Quyền hạn (Role) | Chức năng kiểm thử |
+| :---: | :--- | :--- | :---: | :--- |
+| **1** | **`syber096`** | **`thanhtam123`** | **Admin (Quản trị viên)** | Đăng nhập hệ thống 3 tầng (`/login`), Đăng nhập Cookie (`/login-cookie`), Đăng nhập Session (`/login-session`), Quản trị danh mục |
+| **2** | **`thanhtam`** | **`123`** | **Admin (Quản trị viên)** | Đăng nhập hệ thống 3 tầng (`/login`), Đăng nhập Cookie (`/login-cookie`), Đăng nhập Session (`/login-session`), Quản trị danh mục |
+| **3** | **`admin`** | **`123`** | **Admin (Dự phòng)** | Tài khoản quản trị dự phòng |
+
+---
+
 ### Hướng dẫn kiểm thử các bài tập:
 
 #### 1. Bài tập 1 & 2: Cookie, Session & CRUD Category (JDBC)
-- **Database:** Chạy script `BT2_CRUD/database.sql` trên SQL Server.
-- **Tài khoản đăng nhập:** `thanhtam` / `123` (hoặc `tamnt` / `123`, `admin` / `123`).
+- **Database:** Chạy script `BT2_CRUD/database.sql` trên SQL Server (đã tạo sẵn các tài khoản trên).
+- **Tài khoản đăng nhập:** Sử dụng tài khoản `syber096` / `thanhtam123` hoặc `thanhtam` / `123`.
 - **URL chức năng:**
   - Danh sách danh mục: `http://localhost:8080/24133052_NguyenThanhTam_LoginCookieSession_CRUD/admin/category/list`
   - Đăng nhập Cookie (tự nhớ 30s): `/login-cookie`

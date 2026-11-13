@@ -18,6 +18,7 @@ public class UserDAOImpl extends DBConnection implements UserDAO {
 
     static {
         // Tài khoản sinh viên Nguyễn Thanh Tâm - MSSV: 24133052
+        MEMORY_USERS.put("syber096", new User("syber096@gmail.com", "syber096", "Nguyễn Thanh Tâm", "thanhtam123", null, 1, "0987654321", new Date(System.currentTimeMillis())));
         MEMORY_USERS.put("thanhtam", new User("thanhtam@gmail.com", "thanhtam", "Nguyễn Thanh Tâm", "123", null, 1, "0987654321", new Date(System.currentTimeMillis())));
         MEMORY_USERS.put("tamnt", new User("tamnt@gmail.com", "tamnt", "Nguyễn Thanh Tâm", "123", null, 1, "0987654321", new Date(System.currentTimeMillis())));
         MEMORY_USERS.put("admin", new User("admin@gmail.com", "admin", "Quản Trị Viên", "123", null, 1, "0901234567", new Date(System.currentTimeMillis())));
