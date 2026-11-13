@@ -1,6 +1,6 @@
--- =======================================================
+﻿-- =======================================================
 -- BÀI TẬP: LẬP TRÌNH WEB (WEBPR330479)
--- SINH VIÊN: Nguyễn Thành Tâm
+-- SINH VIÊN: Nguyễn Thanh Tâm
 -- MSSV: 24133052
 -- =======================================================
 
@@ -39,9 +39,9 @@ CREATE TABLE [User](
 );
 GO
 
--- Tài khoản mẫu cho Nguyễn Thành Tâm (admin: roleid = 1)
+-- Tài khoản mẫu cho Nguyễn Thanh Tâm (admin: roleid = 1)
 INSERT INTO [User](email, username, fullname, password, avatar, roleid, phone, createdDate)
-VALUES ('thanhtam@gmail.com', 'thanhtam', N'Nguyễn Thành Tâm', '123', NULL, 1, '0987654321', GETDATE());
+VALUES ('thanhtam@gmail.com', 'thanhtam', N'Nguyễn Thanh Tâm', '123', NULL, 1, '0987654321', GETDATE());
 
 INSERT INTO [User](email, username, fullname, password, avatar, roleid, phone, createdDate)
 VALUES ('admin@gmail.com', 'admin', N'Quản Trị Viên', '123', NULL, 1, '0901234567', GETDATE());

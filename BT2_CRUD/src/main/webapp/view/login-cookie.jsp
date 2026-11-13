@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Đăng Nhập (Sử dụng Cookie)</h2>
-    <p>Sinh viên: <b>Nguyễn Thành Tâm</b> - MSSV: <b>24133052</b></p>
+    <p>Sinh viên: <b>Nguyễn Thanh Tâm</b> - MSSV: <b>24133052</b></p>
     <form action="${pageContext.request.contextPath}/login-cookie" method="post"> 
         <label>UserName:</label>
         <input type="text" name="username" placeholder="thanhtam hoặc tamnt" required><br><br>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -88,7 +88,7 @@
 <div class="container">
     <h2>Quản Lý Danh Mục (Category CRUD)</h2>
     <div class="student-info">
-        Sinh viên thực hiện: <b>Nguyễn Thành Tâm</b> | MSSV: <b>24133052</b> | Lớp: Lập trình Web
+        Sinh viên thực hiện: <b>Nguyễn Thanh Tâm</b> | MSSV: <b>24133052</b> | Lớp: Lập trình Web
     </div>
 
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">

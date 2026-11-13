@@ -3,7 +3,7 @@
 
 * **Trường:** Đại học Sư phạm Kỹ thuật TP.HCM (HCMUTE)
 * **Giảng viên hướng dẫn:** ThS. Nguyễn Hữu Trung
-* **Sinh viên thực hiện:** Nguyễn Thành Tâm
+* **Sinh viên thực hiện:** Nguyễn Thanh Tâm
 * **Mã số sinh viên (MSSV):** 24133052
 * **Kho lưu trữ GitHub:** [NguyenThanhTam-24133052-LapTrinhWeb](https://github.com/ThanhTam1710/NguyenThanhTam-24133052-LapTrinhWeb)
 

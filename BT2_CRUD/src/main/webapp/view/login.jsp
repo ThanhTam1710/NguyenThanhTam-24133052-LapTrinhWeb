@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -66,7 +66,7 @@
 <body>
 <div class="login-card">
     <h2>Đăng Nhập Hệ Thống</h2>
-    <div class="student-text">Sinh viên: <b>Nguyễn Thành Tâm</b> - MSSV: <b>24133052</b></div>
+    <div class="student-text">Sinh viên: <b>Nguyễn Thanh Tâm</b> - MSSV: <b>24133052</b></div>
 
     <form action="${pageContext.request.contextPath}/login" method="post">
         <div class="form-group">

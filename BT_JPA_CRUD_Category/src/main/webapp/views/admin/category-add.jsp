@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -57,7 +57,7 @@
 <body>
 <div class="form-card">
     <h2>Thêm Mới Danh Mục (JPA)</h2>
-    <p style="font-size: 13px; color: #666; margin-bottom: 20px;">Sinh viên: <b>Nguyễn Thành Tâm</b> - MSSV: <b>24133052</b></p>
+    <p style="font-size: 13px; color: #666; margin-bottom: 20px;">Sinh viên: <b>Nguyễn Thanh Tâm</b> - MSSV: <b>24133052</b></p>
 
     <form action="<c:url value='/admin/category/insert'/>" method="post" enctype="multipart/form-data">
         <div class="form-group">

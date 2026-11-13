@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -73,7 +73,7 @@
 <div class="container">
     <h1>Hệ Thống Thực Hành Lập Trình Web</h1>
     <div class="student-badge">
-        Họ và tên: <b>Nguyễn Thành Tâm</b><br>
+        Họ và tên: <b>Nguyễn Thanh Tâm</b><br>
         Mã số sinh viên: <b>24133052</b><br>
         Bài tập: <b>Login Cookie & Session + CRUD Category (Servlet JDBC)</b>
     </div>

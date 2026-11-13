@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -91,7 +91,7 @@
 <div class="container">
     <h2>Quản Lý Danh Mục (JPA 3.0 & Hibernate 6.x)</h2>
     <div class="student-banner">
-        Sinh viên thực hiện: <b>Nguyễn Thành Tâm</b> | MSSV: <b>24133052</b> | Công nghệ: <b>JPA 3.0 + Jakarta Servlet 6.0</b>
+        Sinh viên thực hiện: <b>Nguyễn Thanh Tâm</b> | MSSV: <b>24133052</b> | Công nghệ: <b>JPA 3.0 + Jakarta Servlet 6.0</b>
     </div>
 
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">

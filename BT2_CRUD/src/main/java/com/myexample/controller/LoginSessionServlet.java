@@ -1,4 +1,4 @@
-package com.myexample.controller;
+﻿package com.myexample.controller;
 
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public class LoginSessionServlet extends HttpServlet {
         String user = req.getParameter("username");
         String pass = req.getParameter("password");
 
-        // Tài khoản sinh viên Nguyễn Thành Tâm: thanhtam / 123 hoặc tamnt / 123
+        // Tài khoản sinh viên Nguyễn Thanh Tâm: thanhtam / 123 hoặc tamnt / 123
         if (("thanhtam".equalsIgnoreCase(user) || "tamnt".equalsIgnoreCase(user) || "admin".equalsIgnoreCase(user)) && "123".equals(pass)) {
             HttpSession session = req.getSession();
             session.setAttribute("name", user);

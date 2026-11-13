@@ -1,4 +1,4 @@
-package com.myexample.controller;
+﻿package com.myexample.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -32,7 +32,7 @@ public class HelloCookieServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/login-cookie");
         } else {
             out.println("<h2>Xin chào " + name + " (Đọc từ Cookie)</h2>");
-            out.println("<p>Sinh viên thực hiện: <b>Nguyễn Thành Tâm</b> - MSSV: <b>24133052</b></p>");
+            out.println("<p>Sinh viên thực hiện: <b>Nguyễn Thanh Tâm</b> - MSSV: <b>24133052</b></p>");
             out.println("<p>Tải lại trang sau 30 giây, bạn sẽ bị bắt đăng nhập lại vì Cookie đã hết hạn!</p>");
             out.println("<br><a href='" + req.getContextPath() + "/login-cookie'>Quay lại trang Đăng Nhập</a>");
         }

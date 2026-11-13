@@ -1,4 +1,4 @@
-package com.myexample.controller;
+﻿package com.myexample.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +23,7 @@ public class ProfileServlet extends HttpServlet {
 		if (session != null && session.getAttribute("name") != null) {
 			String name = (String) session.getAttribute("name");
 			out.print("<h2>Chào bạn, " + name + " đến với trang quản lý tài khoản (Session)</h2>");
-			out.print("<p>Sinh viên: <b>Nguyễn Thành Tâm</b> - MSSV: <b>24133052</b></p>");
+			out.print("<p>Sinh viên: <b>Nguyễn Thanh Tâm</b> - MSSV: <b>24133052</b></p>");
 			out.print("<br><a href='" + req.getContextPath() + "/admin/category/list'>Quản lý danh mục (Category CRUD)</a>");
 			out.print("<br><br><a href='" + req.getContextPath() + "/logout'>Đăng Xuất</a>");
 		} else {

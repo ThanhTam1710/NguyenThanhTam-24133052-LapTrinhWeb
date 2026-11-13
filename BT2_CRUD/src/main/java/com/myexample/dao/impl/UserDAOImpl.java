@@ -1,4 +1,4 @@
-package com.myexample.dao.impl;
+﻿package com.myexample.dao.impl;
 
 import com.myexample.connection.DBConnection;
 import com.myexample.dao.UserDAO;
@@ -17,9 +17,9 @@ public class UserDAOImpl extends DBConnection implements UserDAO {
     private static final Map<String, User> MEMORY_USERS = new HashMap<>();
 
     static {
-        // Tài khoản sinh viên Nguyễn Thành Tâm - MSSV: 24133052
-        MEMORY_USERS.put("thanhtam", new User("thanhtam@gmail.com", "thanhtam", "Nguyễn Thành Tâm", "123", null, 1, "0987654321", new Date(System.currentTimeMillis())));
-        MEMORY_USERS.put("tamnt", new User("tamnt@gmail.com", "tamnt", "Nguyễn Thành Tâm", "123", null, 1, "0987654321", new Date(System.currentTimeMillis())));
+        // Tài khoản sinh viên Nguyễn Thanh Tâm - MSSV: 24133052
+        MEMORY_USERS.put("thanhtam", new User("thanhtam@gmail.com", "thanhtam", "Nguyễn Thanh Tâm", "123", null, 1, "0987654321", new Date(System.currentTimeMillis())));
+        MEMORY_USERS.put("tamnt", new User("tamnt@gmail.com", "tamnt", "Nguyễn Thanh Tâm", "123", null, 1, "0987654321", new Date(System.currentTimeMillis())));
         MEMORY_USERS.put("admin", new User("admin@gmail.com", "admin", "Quản Trị Viên", "123", null, 1, "0901234567", new Date(System.currentTimeMillis())));
     }
 

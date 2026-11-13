@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -52,7 +52,7 @@
 <body>
 <div class="form-card">
     <h2>Thêm Danh Mục Mới</h2>
-    <p style="font-size: 13px; color: #666;">Sinh viên: Nguyễn Thành Tâm - 24133052</p>
+    <p style="font-size: 13px; color: #666;">Sinh viên: Nguyễn Thanh Tâm - 24133052</p>
     <hr style="border: none; border-top: 1px solid #eee; margin-bottom: 20px;">
 
     <form action="${pageContext.request.contextPath}/admin/category/add" method="post" enctype="multipart/form-data">
