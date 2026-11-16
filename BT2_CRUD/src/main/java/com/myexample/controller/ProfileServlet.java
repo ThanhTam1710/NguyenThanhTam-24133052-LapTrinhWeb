@@ -1,4 +1,4 @@
-﻿package com.myexample.controller;
+package com.myexample.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;

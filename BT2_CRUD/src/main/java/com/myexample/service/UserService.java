@@ -11,4 +11,11 @@ public interface UserService {
     boolean checkExistEmail(String email);
     boolean checkExistUsername(String username);
     boolean checkExistPhone(String phone);
+
+    // Bổ sung các chức năng OTP và Quên mật khẩu
+    boolean registerWithOtp(String username, String password, String email, String fullname, String phone);
+    boolean verifyAccount(String usernameOrEmail, String otp);
+    boolean resendOtp(String usernameOrEmail, String actionType);
+    boolean sendForgotPasswordOtp(String emailOrUsername);
+    boolean resetPassword(String emailOrUsername, String otp, String newPassword);
 }

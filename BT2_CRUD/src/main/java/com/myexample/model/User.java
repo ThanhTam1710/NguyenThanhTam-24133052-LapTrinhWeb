@@ -2,6 +2,7 @@ package com.myexample.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -16,12 +17,19 @@ public class User implements Serializable {
     private String phone;
     private Date createdDate;
 
+    // Các trường phục vụ kích hoạt tài khoản OTP và quên mật khẩu
+    private int status; // 0: Chưa kích hoạt, 1: Đã kích hoạt
+    private String code; // Mã OTP 6 chữ số
+    private Timestamp otpExpiry; // Thời gian hết hạn của OTP
+
     public User() {
+        this.status = 1; // Mặc định là 1 nếu không chỉ định
     }
 
     public User(String username, String password) {
         this.userName = username;
         this.passWord = password;
+        this.status = 1;
     }
 
     public User(String email, String userName, String fullName, String passWord, String avatar, int roleid, String phone, Date createdDate) {
@@ -33,6 +41,21 @@ public class User implements Serializable {
         this.roleid = roleid;
         this.phone = phone;
         this.createdDate = createdDate;
+        this.status = 1;
+    }
+
+    public User(String email, String userName, String fullName, String passWord, String avatar, int roleid, String phone, Date createdDate, int status, String code, Timestamp otpExpiry) {
+        this.email = email;
+        this.userName = userName;
+        this.fullName = fullName;
+        this.passWord = passWord;
+        this.avatar = avatar;
+        this.roleid = roleid;
+        this.phone = phone;
+        this.createdDate = createdDate;
+        this.status = status;
+        this.code = code;
+        this.otpExpiry = otpExpiry;
     }
 
     public int getId() {
@@ -121,5 +144,37 @@ public class User implements Serializable {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getOtp() {
+        return code;
+    }
+
+    public void setOtp(String otp) {
+        this.code = otp;
+    }
+
+    public Timestamp getOtpExpiry() {
+        return otpExpiry;
+    }
+
+    public void setOtpExpiry(Timestamp otpExpiry) {
+        this.otpExpiry = otpExpiry;
     }
 }

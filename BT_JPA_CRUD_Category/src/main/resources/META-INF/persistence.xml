@@ -6,6 +6,7 @@
     <persistence-unit name="jpa-hibernate-mysql">
         <class>vn.iotstar.entity.Category</class>
         <class>vn.iotstar.entity.Video</class>
+        <class>vn.iotstar.entity.User</class>
 
         <properties>
             <!-- Cấu hình kết nối SQL Server -->
