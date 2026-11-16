@@ -90,6 +90,9 @@
     </style>
 </head>
 <body>
+<c:if test="${not empty sessionScope.account}">
+    <c:redirect url="/admin/category/list" />
+</c:if>
 <div class="container">
     <h1>Hệ Thống Thực Hành Lập Trình Web</h1>
     <div class="student-badge">

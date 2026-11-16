@@ -47,7 +47,21 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        // 2. Kiểm tra mật khẩu khớp nhau
+        // 2. Kiểm tra độ dài mật khẩu
+        if (password.length() < 6) {
+            req.setAttribute("error", "Mật khẩu phải có ít nhất 6 ký tự!");
+            req.getRequestDispatcher("/view/register.jsp").forward(req, resp);
+            return;
+        }
+
+        // 3. Kiểm tra username hợp lệ (chỉ chữ, số, dấu gạch dưới)
+        if (!username.trim().matches("^[a-zA-Z0-9_]{3,30}$")) {
+            req.setAttribute("error", "Tên đăng nhập chỉ được chứa chữ cái, số và dấu gạch dưới (3-30 ký tự)!");
+            req.getRequestDispatcher("/view/register.jsp").forward(req, resp);
+            return;
+        }
+
+        // 4. Kiểm tra mật khẩu khớp nhau
         if (!password.equals(confirmPassword)) {
             req.setAttribute("error", "Mật khẩu xác nhận không khớp!");
             req.getRequestDispatcher("/view/register.jsp").forward(req, resp);

@@ -2,6 +2,11 @@
 ## BÁO CÁO BÀI TẬP 02 (12/11/2026 - 16/11/2026)
 ### BỔ SUNG: KÍCH HOẠT OTP QUA EMAIL, HASH PASSWORD & QUÊN MẬT KHẨU
 
+> ## 🎯 THƯ MỤC BÀI TẬP CẦN CHẤM: `BT2_CRUD`
+> 👉 **Kính gửi Thầy:** Toàn bộ yêu cầu bài tập 02 (Kích hoạt OTP Email, Mật khẩu băm BCrypt, Đăng xuất, Quên mật khẩu OTP qua mail, Web Bán Hàng CRUD Danh mục) được thực hiện hoàn chỉnh trong thư mục: **`BT2_CRUD/`**.
+> * **Khi mở trên Eclipse / STS / VS Code:** Thầy chỉ cần chọn mở duy nhất thư mục **`BT2_CRUD`** (hoặc file `BT2_CRUD/pom.xml`) -> **Run on Server (Tomcat 10.1)**.
+> * *Lưu ý:* Thư mục `BT1_Login_Cookie_Session` và `BT_JPA_CRUD_Category` là các bài tập cũ trước đó lưu kèm theo trong repository.
+
 * **Trường:** Đại học Sư phạm Kỹ thuật TP.HCM (HCMUTE)
 * **Khoa:** Công Nghệ Thông Tin
 * **Giảng viên hướng dẫn:** ThS. Nguyễn Hữu Trung
@@ -21,7 +26,8 @@
 | **3** | **`admin`** | **`123`** | **BCrypt Hash** (`$2a$...`) | **Đã kích hoạt (`status = 1`)** | **Admin (Dự phòng)** | Đăng nhập quản trị hệ thống |
 
 > 💡 **Kiểm thử Đăng ký tài khoản mới & Nhận OTP:**  
-> Giảng viên có thể vào link `/register`, đăng ký một tài khoản bất kỳ (ví dụ `testuser` / email `test@gmail.com`). Hệ thống sẽ tự động băm mật khẩu, sinh mã OTP 6 số và gửi qua email. Đồng thời mã OTP được **in trực tiếp ra Server Console** và **hiển thị tại khung thông báo trợ giúp trên giao diện** để giảng viên test nhanh trong 3 giây mà không cần cấu hình email thật.
+> Hệ thống đã cấu hình SMTP Gmail thật. Khi đăng ký hoặc quên mật khẩu, giảng viên chỉ cần nhập **email thật** của mình, mã OTP 6 số sẽ được gửi trực tiếp đến hộp thư (kiểm tra cả thư mục Spam). Ngoài ra, mã OTP cũng được **hiển thị trực tiếp trên giao diện** (khung "Hỗ trợ chấm bài") để test nhanh mà không cần mở email.  
+> 📖 **Hướng dẫn kiểm thử chi tiết từng bước:** xem file **[HUONG_DAN_CHAY_WEB.md](HUONG_DAN_CHAY_WEB.md)** → Mục 5.
 
 ---
 

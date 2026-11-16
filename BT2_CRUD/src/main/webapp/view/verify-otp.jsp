@@ -4,117 +4,156 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Xác Thực OTP - 24133052_NguyenThanhTam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác Thực OTP - Nguyễn Thanh Tâm</title>
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
-            margin: 0;
-            padding: 40px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 24px 16px;
+            background: radial-gradient(circle at 15% 15%, #1e3a8a 0%, transparent 45%),
+                        radial-gradient(circle at 85% 85%, #0f766e 0%, transparent 45%),
+                        linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background-attachment: fixed;
+            color: #334155;
         }
-        .otp-card {
+        .card-wrapper {
             width: 100%;
-            max-width: 440px;
-            background: white;
-            padding: 35px 30px;
-            border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.35);
+            padding: 36px 32px;
             text-align: center;
+            position: relative;
         }
-        h2 { color: #003366; margin: 0 0 6px 0; }
-        .student-text { font-size: 13px; color: #666; margin-bottom: 20px; }
+        .card-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 24px;
+            right: 24px;
+            height: 4px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4, #10b981);
+        }
+        .brand-icon {
+            width: 52px;
+            height: 52px;
+            background: #eff6ff;
+            color: #2563eb;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            border: 1px solid #bfdbfe;
+        }
+        h2 { font-size: 24px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; }
+        .student-info { font-size: 13px; color: #64748b; margin-top: 6px; margin-bottom: 20px; }
+        .student-info b { color: #1e293b; }
         .alert {
             padding: 12px 14px;
-            border-radius: 6px;
+            border-radius: 10px;
             font-size: 13.5px;
             margin-bottom: 18px;
-            line-height: 1.4;
             text-align: left;
+            line-height: 1.45;
         }
-        .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .alert-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .alert-warning { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
-        .otp-info {
+        .alert-success { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+        .alert-danger { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+        .alert-warning { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+        .desc {
             font-size: 14px;
-            color: #555;
-            margin-bottom: 22px;
+            color: #64748b;
             line-height: 1.5;
-        }
-        .otp-input-container {
-            margin: 20px 0;
+            margin-bottom: 22px;
         }
         .otp-input {
             width: 100%;
-            max-width: 260px;
+            max-width: 250px;
             padding: 12px;
             font-size: 26px;
-            font-weight: bold;
-            letter-spacing: 8px;
+            font-weight: 800;
+            letter-spacing: 10px;
             text-align: center;
-            border: 2px solid #0066cc;
-            border-radius: 8px;
-            box-sizing: border-box;
+            border: 2px solid #2563eb;
+            border-radius: 12px;
             outline: none;
-            color: #333;
+            color: #0f172a;
+            background: #f8fafc;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
         }
-        .btn-verify {
+        .otp-input:focus {
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.16);
+        }
+        .btn-submit {
             width: 100%;
-            padding: 12px;
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            padding: 13px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+            color: #ffffff;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background 0.2s;
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+            transition: all 0.2s ease;
         }
-        .btn-verify:hover { background-color: #004c99; }
+        .btn-submit:hover {
+            box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
+            transform: translateY(-1px);
+        }
         .resend-box {
             margin-top: 18px;
             font-size: 13.5px;
-            color: #666;
+            color: #64748b;
         }
-        .resend-box a { color: #d9534f; font-weight: 600; text-decoration: none; }
-        .resend-box a:hover { text-decoration: underline; }
-        .test-helper-box {
-            margin-top: 22px;
-            padding: 12px;
-            background: #fdfaf2;
-            border: 1px dashed #f0ad4e;
-            border-radius: 6px;
-            font-size: 13px;
-            color: #8a6d3b;
-            text-align: left;
-        }
-        .badge-otp {
-            font-size: 18px;
-            font-weight: bold;
-            color: #d9534f;
-            background: #fff;
-            padding: 2px 8px;
-            border-radius: 4px;
-            border: 1px solid #d9534f;
+        .resend-link {
+            color: #ef4444;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
             display: inline-block;
-            margin-top: 4px;
+        }
+        .resend-link:hover { text-decoration: underline; }
+        .resend-link.disabled {
+            color: #94a3b8;
+            cursor: not-allowed;
+            pointer-events: none;
+            text-decoration: none;
+        }
+        .countdown-badge {
+            color: #ef4444;
+            font-weight: 700;
         }
         .back-link {
             display: block;
-            margin-top: 20px;
-            color: #777;
-            text-decoration: none;
+            margin-top: 16px;
             font-size: 13px;
+            color: #94a3b8;
+            text-decoration: none;
         }
+        .back-link:hover { color: #0f172a; }
     </style>
 </head>
 <body>
-<div class="otp-card">
-    <h2>XÁC THỰC MÃ OTP</h2>
-    <div class="student-text">Sinh viên: <b>Nguyễn Thanh Tâm</b> - MSSV: <b>24133052</b></div>
+
+<div class="card-wrapper">
+    <div class="brand-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+    </div>
+    <h2>Xác Thực OTP</h2>
+    <div class="student-info">Sinh viên: <b>Nguyễn Thanh Tâm</b> | MSSV: <b>24133052</b></div>
 
     <c:if test="${not empty message}">
         <div class="alert alert-success">${message}</div>
@@ -126,42 +165,88 @@
         <div class="alert alert-warning">${warning}</div>
     </c:if>
 
-    <div class="otp-info">
-        Hệ thống đã gửi một mã OTP gồm <b>6 chữ số</b> đến email 
-        <c:choose>
-            <c:when test="${not empty sessionScope.otp_email}">
-                <b>${sessionScope.otp_email}</b>
-            </c:when>
-            <c:otherwise>của bạn</c:otherwise>
-        </c:choose>.
-        <br>Vui lòng nhập mã bên dưới để kích hoạt tài khoản (Hiệu lực: 5 phút).
+    <div class="desc">
+        Mã OTP xác thực gồm 6 số đã gửi tới email<br>
+        <b>${not empty sessionScope.otp_email ? sessionScope.otp_email : 'đăng ký của bạn'}</b>.
     </div>
 
     <form action="${pageContext.request.contextPath}/verify-otp" method="post">
         <input type="hidden" name="username" value="${sessionScope.otp_username}">
 
-        <div class="otp-input-container">
-            <input type="text" name="otp" class="otp-input" maxlength="6" placeholder="------" required autofocus autocomplete="off">
+        <div>
+            <input type="text" name="otp" id="otpField" class="otp-input" maxlength="6" placeholder="------" required autofocus autocomplete="one-time-code">
         </div>
 
-        <button type="submit" class="btn-verify">Kích Hoạt Tài Khoản</button>
+        <button type="submit" class="btn-submit">Xác Nhận Kích Hoạt</button>
     </form>
 
     <div class="resend-box">
-        Chưa nhận được mã OTP? 
-        <a href="${pageContext.request.contextPath}/verify-otp?action=resend">Gửi lại mã OTP</a>
+        <c:choose>
+            <c:when test="${blockResend eq true or sessionScope.otp_resend_count >= 3}">
+                <span style="color: #dc2626; font-weight: 600;">Đã vượt quá 3 lần gửi lại mã! Vui lòng kiểm tra kỹ email.</span>
+            </c:when>
+            <c:otherwise>
+                Chưa nhận được mã? 
+                <a id="resendBtn" class="resend-link" 
+                   href="${pageContext.request.contextPath}/verify-otp?action=resend&username=${sessionScope.otp_username}">
+                   Gửi lại mã OTP
+                </a>
+                <span id="countdownText" class="countdown-badge" style="display: none;"></span>
+            </c:otherwise>
+        </c:choose>
     </div>
-
-    <!-- Hỗ trợ giảng viên kiểm thử tiện lợi ngay trên máy chấm bài -->
-    <c:if test="${not empty sessionScope.debug_otp}">
-        <div class="test-helper-box">
-            🔔 <b>Hỗ trợ chấm bài / Test nhanh:</b><br>
-            Mã OTP vừa được tạo và gửi đến email (đồng thời ghi log Server Console):<br>
-            <span class="badge-otp">${sessionScope.debug_otp}</span>
-        </div>
-    </c:if>
 
     <a href="${pageContext.request.contextPath}/login" class="back-link">&larr; Quay lại Đăng Nhập</a>
 </div>
+
+<script>
+    (function() {
+        var resendBtn = document.getElementById('resendBtn');
+        var countdownText = document.getElementById('countdownText');
+        if (!resendBtn) return;
+
+        var storageKey = 'otp_resend_cooldown';
+        var cooldownSec = 30;
+
+        function updateCountdown() {
+            var expireAt = parseInt(sessionStorage.getItem(storageKey) || '0', 10);
+            var now = Date.now();
+            var remaining = Math.ceil((expireAt - now) / 1000);
+
+            if (remaining > 0) {
+                resendBtn.classList.add('disabled');
+                resendBtn.style.display = 'none';
+                countdownText.style.display = 'inline';
+                countdownText.innerText = 'Gửi lại mã sau (' + remaining + 's)';
+                setTimeout(updateCountdown, 1000);
+            } else {
+                resendBtn.classList.remove('disabled');
+                resendBtn.style.display = 'inline';
+                countdownText.style.display = 'none';
+                sessionStorage.removeItem(storageKey);
+            }
+        }
+
+        // Nếu server vừa gửi lại mã thành công
+        <c:if test="${not empty startCooldown or not empty message}">
+            sessionStorage.setItem(storageKey, Date.now() + cooldownSec * 1000);
+        </c:if>
+
+        // Bắt sự kiện click
+        resendBtn.addEventListener('click', function(e) {
+            if (resendBtn.classList.contains('disabled')) {
+                e.preventDefault();
+                return false;
+            }
+            sessionStorage.setItem(storageKey, Date.now() + cooldownSec * 1000);
+            resendBtn.classList.add('disabled');
+            resendBtn.innerText = 'Đang gửi mã...';
+        });
+
+        // Kiểm tra cooldown lúc tải trang
+        updateCountdown();
+    })();
+</script>
+
 </body>
 </html>

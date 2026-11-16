@@ -84,6 +84,6 @@ public class LoginServlet extends HttpServlet {
             resp.addCookie(cookieUser);
         }
 
-        resp.sendRedirect(req.getContextPath() + "/home");
+        resp.sendRedirect(req.getContextPath() + "/admin/category/list");
     }
 }

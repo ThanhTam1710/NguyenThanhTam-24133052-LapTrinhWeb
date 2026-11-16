@@ -1,6 +1,9 @@
 # HƯỚNG DẪN KHỞI CHẠY VÀ KIỂM THỬ HỆ THỐNG WEB
 ## BÀI TẬP LẬP TRÌNH WEB (WEBPR330479) - HCMUTE
 
+> ## 🎯 THƯ MỤC CẦN CHẤM BÀI: `BT2_CRUD`
+> 👉 Toàn bộ source code bài tập cần chấm (OTP Email, Hash Password, Quên mật khẩu, CRUD Bán Hàng) nằm trong thư mục: **`BT2_CRUD/`**.
+
 * **Sinh viên thực hiện:** Nguyễn Thanh Tâm
 * **Mã số sinh viên (MSSV):** 24133052
 * **Giảng viên hướng dẫn:** ThS. Nguyễn Hữu Trung
@@ -124,5 +127,49 @@
 
 ---
 
+---
+
+## 5. HƯỚNG DẪN KIỂM THỬ GỬI OTP THẬT QUA EMAIL (TỪNG BƯỚC)
+
+Hệ thống đã được cấu hình sẵn tài khoản Gmail SMTP để gửi email thật. Khi đăng ký hoặc quên mật khẩu, mã OTP sẽ được gửi trực tiếp đến email mà người dùng nhập vào.
+
+### ✅ Test 1: Đăng ký tài khoản mới & nhận OTP qua email thật
+
+| Bước | Thao tác | Kết quả mong đợi |
+| :---: | :--- | :--- |
+| 1 | Mở trình duyệt, truy cập: `http://localhost:8080/24133052_NguyenThanhTam_CRUD/register` | Hiển thị trang Đăng ký tài khoản |
+| 2 | Nhập thông tin: **Username:** `testmail01`, **Email:** *(nhập email thật của bạn, ví dụ: `yourname@gmail.com`)*, **Họ tên:** `Nguoi Dung Test`, **SĐT:** `0901234567`, **Mật khẩu:** `123456`, **Xác nhận:** `123456` | Các ô được điền đầy đủ |
+| 3 | Nhấn nút **"Đăng Ký & Nhận Mã OTP Qua Email"** | Chuyển sang trang Xác thực OTP. Hệ thống gửi email chứa mã OTP 6 số đến email vừa nhập |
+| 4 | Mở hộp thư email (kiểm tra cả **Hộp thư đến** và **thư mục Spam**). Tìm email từ **"HCMUTE Web System"** | Email chứa mã OTP 6 chữ số, có giao diện HTML đẹp với logo HCMUTE |
+| 5 | Copy mã OTP từ email, quay lại trang web, dán vào ô nhập OTP | Ô OTP hiển thị 6 chữ số |
+| 6 | Nhấn **"Kích Hoạt Tài Khoản"** | Thông báo kích hoạt thành công, chuyển sang trang Đăng nhập |
+| 7 | Đăng nhập bằng `testmail01` / `123456` | Đăng nhập thành công, vào Trang chủ |
+
+### ✅ Test 2: Quên mật khẩu & nhận OTP đặt lại mật khẩu qua email thật
+
+| Bước | Thao tác | Kết quả mong đợi |
+| :---: | :--- | :--- |
+| 1 | Truy cập: `http://localhost:8080/24133052_NguyenThanhTam_CRUD/forgot-password` | Hiển thị trang Quên mật khẩu |
+| 2 | Nhập email hoặc username đã đăng ký (ví dụ: `testmail01` hoặc email thật) | Ô nhập được điền |
+| 3 | Nhấn **"Gửi Mã Xác Nhận OTP Qua Email"** | Chuyển sang trang Đặt lại mật khẩu. Email OTP mới được gửi đến hộp thư |
+| 4 | Mở hộp thư email, lấy mã OTP mới | Email mới chứa mã OTP 6 số cho đặt lại mật khẩu |
+| 5 | Nhập mã OTP, nhập mật khẩu mới (ví dụ: `newpass789`), xác nhận mật khẩu | Các ô được điền đầy đủ |
+| 6 | Nhấn **"Xác Nhận & Cập Nhật Mật Khẩu"** | Thông báo đổi mật khẩu thành công |
+| 7 | Đăng nhập bằng `testmail01` / `newpass789` | Đăng nhập thành công với mật khẩu mới |
+
+### ✅ Test 3: Đăng nhập Hash Password & Đăng xuất
+
+| Bước | Thao tác | Kết quả mong đợi |
+| :---: | :--- | :--- |
+| 1 | Truy cập: `http://localhost:8080/24133052_NguyenThanhTam_CRUD/login` | Hiển thị trang Đăng nhập |
+| 2 | Nhập `syber096` / `thanhtam123` (hoặc nhấn chip điền nhanh) | Ô username và password được điền |
+| 3 | Nhấn **"Đăng Nhập"** | Đăng nhập thành công, vào Trang chủ với lời chào cá nhân |
+| 4 | Nhấn nút **"Đăng Xuất"** trên thanh trên cùng | Phiên bị hủy, chuyển về trang Đăng nhập với thông báo đã đăng xuất |
+| 5 | Thử truy cập lại trang chủ bằng URL trực tiếp | Không vào được, phải đăng nhập lại |
+
+---
+
 > 🎯 **Lưu ý đặc biệt cho môi trường chấm bài:**  
-> Hệ thống được lập trình với cơ chế **In-Memory Fallback** thông minh: Nếu máy chấm bài của giảng viên chưa bật dịch vụ SQL Server hoặc chưa có kết nối Internet để gửi mail SMTP, hệ thống **vẫn hoạt động 100% mượt mà** với dữ liệu mẫu trong RAM và in mã OTP trực tiếp lên giao diện để thầy có thể hoàn thành việc chấm điểm chỉ trong 1 - 2 phút!
+> - Hệ thống gửi OTP **thật qua email** (SMTP Gmail). Giảng viên chỉ cần nhập email thật khi đăng ký/quên mật khẩu là sẽ nhận được mã OTP trong hộp thư.
+> - Ngoài ra, mã OTP cũng được **hiển thị trực tiếp trên giao diện** (khung "Hỗ trợ chấm bài") để giảng viên test nhanh mà không cần mở email.
+> - Hệ thống có cơ chế **In-Memory Fallback**: Nếu máy chấm bài chưa bật SQL Server hoặc chưa có Internet, hệ thống **vẫn hoạt động 100%** với dữ liệu mẫu trong RAM.

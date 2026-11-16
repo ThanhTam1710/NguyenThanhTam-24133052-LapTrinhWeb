@@ -4,100 +4,151 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Quên Mật Khẩu - 24133052_NguyenThanhTam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quên Mật Khẩu - Nguyễn Thanh Tâm</title>
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: var(--bg-gradient);
             min-height: 100vh;
-            margin: 0;
-            padding: 40px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 24px 16px;
+            color: var(--text-main);
         }
-        .card {
+        .card-wrapper {
             width: 100%;
-            max-width: 440px;
-            background: white;
-            padding: 35px 30px;
-            border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            max-width: 420px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            padding: 36px 32px;
+            border: 1px solid var(--border-color);
         }
-        h2 { color: #003366; text-align: center; margin: 0 0 6px 0; }
-        .student-text { text-align: center; font-size: 13px; color: #666; margin-bottom: 20px; }
-        .alert {
+        .brand-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            background: #fef2f2;
+            color: #dc2626;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+        .student-info { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+        .alert-danger {
             padding: 12px 14px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 13.5px;
             margin-bottom: 18px;
-            line-height: 1.4;
+            background-color: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
         }
-        .alert-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
         .desc {
-            font-size: 14px;
-            color: #555;
+            font-size: 13.5px;
+            color: var(--text-muted);
             line-height: 1.5;
             margin-bottom: 20px;
         }
         .form-group { margin-bottom: 18px; }
-        label { display: block; margin-bottom: 6px; font-weight: 600; color: #444; font-size: 14px; }
-        input[type="text"] {
-            width: 100%;
-            padding: 11px 12px;
-            box-sizing: border-box;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            font-size: 14px;
+        label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-bottom: 7px;
+            color: #334155;
         }
-        input[type="text"]:focus { border-color: #0066cc; outline: none; }
+        input {
+            width: 100%;
+            padding: 11px 14px;
+            font-size: 14px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            background: #f8fafc;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
         .btn-submit {
             width: 100%;
             padding: 12px;
-            background-color: #d9534f;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            background: #dc2626;
+            color: #ffffff;
             font-size: 15px;
             font-weight: 600;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s ease;
         }
-        .btn-submit:hover { background-color: #c9302c; }
-        .back-link {
-            display: block;
+        .btn-submit:hover { background: #b91c1c; }
+        .footer-action {
             text-align: center;
             margin-top: 18px;
-            color: #0066cc;
-            text-decoration: none;
             font-size: 13.5px;
         }
-        .back-link:hover { text-decoration: underline; }
+        .footer-action a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer-action a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-<div class="card">
-    <h2>QUÊN MẬT KHẨU</h2>
-    <div class="student-text">Sinh viên: <b>Nguyễn Thanh Tâm</b> - MSSV: <b>24133052</b></div>
+
+<div class="card-wrapper">
+    <div class="brand-header">
+        <div class="brand-icon">🔑</div>
+        <h2>Quên Mật Khẩu</h2>
+        <div class="student-info">Sinh viên: <b>Nguyễn Thanh Tâm</b> | MSSV: <b>24133052</b></div>
+    </div>
 
     <c:if test="${not empty error}">
-        <div class="alert alert-danger">${error}</div>
+        <div class="alert-danger">${error}</div>
     </c:if>
 
     <div class="desc">
-        Vui lòng nhập <b>Email</b> hoặc <b>Tên đăng nhập</b> tài khoản của bạn. Hệ thống sẽ tạo và gửi mã xác nhận OTP qua email để bạn đặt lại mật khẩu.
+        Nhập <b>Email</b> hoặc <b>Tên đăng nhập</b> tài khoản của bạn để nhận mã OTP đặt lại mật khẩu.
     </div>
 
     <form action="${pageContext.request.contextPath}/forgot-password" method="post">
         <div class="form-group">
-            <label for="account">Tên đăng nhập hoặc Email:</label>
-            <input type="text" id="account" name="account" placeholder="Ví dụ: thanhtam@gmail.com hoặc thanhtam" required autofocus>
+            <label for="account">Tài khoản hoặc Email</label>
+            <input type="text" id="account" name="account" placeholder="Ví dụ: thanhtam@gmail.com hoặc syber096" required autofocus>
         </div>
 
-        <button type="submit" class="btn-submit">Gửi Mã Xác Nhận OTP Qua Email</button>
+        <button type="submit" class="btn-submit">Gửi Mã OTP Qua Email</button>
     </form>
 
-    <a href="${pageContext.request.contextPath}/login" class="back-link">&larr; Quay lại Đăng Nhập</a>
+    <div class="footer-action">
+        <a href="${pageContext.request.contextPath}/login">&larr; Quay lại Đăng Nhập</a>
+    </div>
 </div>
+
 </body>
 </html>

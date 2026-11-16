@@ -20,8 +20,8 @@ public class EmailUtil {
     // Cấu hình tài khoản gửi Email (Có thể cấu hình hoặc lấy từ biến môi trường)
     public static final String SMTP_HOST = "smtp.gmail.com";
     public static final String SMTP_PORT = "587";
-    public static String SENDER_EMAIL = System.getProperty("SMTP_USER", "thanhtam1710.dev@gmail.com");
-    public static String SENDER_APP_PASSWORD = System.getProperty("SMTP_PASS", "utexlms2026pass");
+    public static String SENDER_EMAIL = System.getProperty("SMTP_USER", "syber096@gmail.com");
+    public static String SENDER_APP_PASSWORD = System.getProperty("SMTP_PASS", "zekoxammkhudvhuu");
 
     // Bộ nhớ đệm lưu mã OTP gần nhất theo email để hỗ trợ kiểm thử tiện lợi
     public static final ConcurrentHashMap<String, String> RECENT_OTP_CACHE = new ConcurrentHashMap<>();
@@ -78,8 +78,8 @@ public class EmailUtil {
             props.put("mail.smtp.starttls.enable", "true");
             props.put("mail.smtp.host", SMTP_HOST);
             props.put("mail.smtp.port", SMTP_PORT);
-            props.put("mail.smtp.connectiontimeout", "3000");
-            props.put("mail.smtp.timeout", "3000");
+            props.put("mail.smtp.connectiontimeout", "10000");
+            props.put("mail.smtp.timeout", "10000");
 
             Session session = Session.getInstance(props, new Authenticator() {
                 @Override

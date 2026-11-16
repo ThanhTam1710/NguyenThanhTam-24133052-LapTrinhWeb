@@ -4,130 +4,176 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng Ký Tài Khoản - 24133052_NguyenThanhTam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Tài Khoản - Nguyễn Thanh Tâm</title>
     <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: var(--bg-gradient);
             min-height: 100vh;
-            margin: 0;
-            padding: 30px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 24px 16px;
+            color: var(--text-main);
         }
         .register-card {
             width: 100%;
-            max-width: 480px;
-            background: white;
-            padding: 35px 30px;
-            border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            max-width: 440px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px;
+            border: 1px solid var(--border-color);
         }
-        h2 { color: #003366; text-align: center; margin: 0 0 6px 0; }
-        .student-text { text-align: center; font-size: 13px; color: #666; margin-bottom: 20px; }
+        .brand-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            background: #eff6ff;
+            color: var(--primary);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+        h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+        .student-info { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
         .alert {
-            padding: 12px 14px;
-            border-radius: 6px;
+            padding: 11px 14px;
+            border-radius: 8px;
             font-size: 13.5px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             line-height: 1.4;
         }
-        .alert-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .alert-info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
-        .form-group { margin-bottom: 14px; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; color: #444; font-size: 13.5px; }
-        input[type="text"], input[type="email"], input[type="password"] {
+        .alert-danger { background-color: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .form-group {
+            margin-bottom: 14px;
+        }
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #334155;
+        }
+        input {
             width: 100%;
             padding: 10px 12px;
-            box-sizing: border-box;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
             font-size: 14px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            background: #f8fafc;
+            color: var(--text-main);
+            transition: all 0.2s ease;
         }
-        input:focus { border-color: #28a745; outline: none; }
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
         .btn-submit {
             width: 100%;
             padding: 12px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            background: var(--primary);
+            color: #ffffff;
             font-size: 15px;
             font-weight: 600;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.2s;
+            margin-top: 6px;
+            transition: background 0.2s ease;
         }
-        .btn-submit:hover { background-color: #218838; }
-        .info-box {
-            margin-top: 15px;
-            padding: 10px 12px;
-            background: #f8f9fa;
-            border-left: 4px solid #28a745;
-            font-size: 12.5px;
-            color: #555;
-            line-height: 1.4;
-        }
-        .footer-link {
+        .btn-submit:hover { background: var(--primary-hover); }
+        .footer-action {
             text-align: center;
             margin-top: 18px;
             font-size: 13.5px;
+            color: var(--text-muted);
         }
-        .footer-link a { color: #0066cc; text-decoration: none; font-weight: 600; }
-        .footer-link a:hover { text-decoration: underline; }
+        .footer-action a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .footer-action a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
+
 <div class="register-card">
-    <h2>ĐĂNG KÝ TÀI KHOẢN</h2>
-    <div class="student-text">Sinh viên: <b>Nguyễn Thanh Tâm</b> - MSSV: <b>24133052</b></div>
+    <div class="brand-header">
+        <div class="brand-icon">📝</div>
+        <h2>Đăng Ký Tài Khoản</h2>
+        <div class="student-info">Sinh viên: <b>Nguyễn Thanh Tâm</b> | MSSV: <b>24133052</b></div>
+    </div>
 
     <c:if test="${not empty error}">
         <div class="alert alert-danger">${error}</div>
     </c:if>
 
-    <div class="info-box">
-        💡 <b>Quy trình bảo mật:</b> Sau khi điền thông tin, hệ thống sẽ tự động <b>mã hóa mật khẩu (BCrypt Hash)</b> và <b>gửi mã OTP 6 chữ số qua Email</b> để kích hoạt tài khoản.
-    </div>
-
-    <form action="${pageContext.request.contextPath}/register" method="post" style="margin-top: 15px;">
+    <form action="${pageContext.request.contextPath}/register" method="post">
         <div class="form-group">
-            <label for="username">Tên đăng nhập (*):</label>
-            <input type="text" id="username" name="username" placeholder="Ví dụ: thanhtam2026" required autofocus>
+            <label for="username">Tên đăng nhập (*)</label>
+            <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required autofocus>
         </div>
 
         <div class="form-group">
-            <label for="email">Địa chỉ Email nhận mã OTP (*):</label>
-            <input type="email" id="email" name="email" placeholder="Ví dụ: example@gmail.com" required>
+            <label for="email">Địa chỉ Email (*)</label>
+            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
         </div>
 
-        <div class="form-group">
-            <label for="fullname">Họ và tên:</label>
-            <input type="text" id="fullname" name="fullname" placeholder="Ví dụ: Nguyễn Thanh Tâm">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="fullname">Họ và tên</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Nguyễn Thanh Tâm">
+            </div>
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="text" id="phone" name="phone" placeholder="0987654321">
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="phone">Số điện thoại:</label>
-            <input type="text" id="phone" name="phone" placeholder="Ví dụ: 0987654321">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="password">Mật khẩu (*)</label>
+                <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Xác nhận (*)</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Nhập lại" required>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="password">Mật khẩu (*):</label>
-            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu (sẽ được mã hóa an toàn)" required>
-        </div>
-
-        <div class="form-group">
-            <label for="confirmPassword">Xác nhận mật khẩu (*):</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Nhập lại mật khẩu" required>
-        </div>
-
-        <button type="submit" class="btn-submit">Đăng Ký & Nhận Mã OTP Qua Email</button>
+        <button type="submit" class="btn-submit">Đăng Ký & Nhận Mã OTP</button>
     </form>
 
-    <div class="footer-link">
-        Đã có tài khoản? <a href="${pageContext.request.contextPath}/login">Đăng nhập ngay</a>
+    <div class="footer-action">
+        Đã có tài khoản? <a href="${pageContext.request.contextPath}/login">Đăng nhập</a>
     </div>
 </div>
+
 </body>
 </html>
