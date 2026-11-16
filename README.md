@@ -8,6 +8,7 @@
 * **Sinh viên thực hiện:** Nguyễn Thanh Tâm
 * **Mã số sinh viên (MSSV):** 24133052
 * **Kho lưu trữ GitHub:** [https://github.com/ThanhTam1710/NguyenThanhTam-24133052-LapTrinhWeb](https://github.com/ThanhTam1710/NguyenThanhTam-24133052-LapTrinhWeb)
+* **Tài liệu hướng dẫn chạy chi tiết:** 👉 **[Xem file HUONG_DAN_CHAY_WEB.md](HUONG_DAN_CHAY_WEB.md)**
 
 ---
 
