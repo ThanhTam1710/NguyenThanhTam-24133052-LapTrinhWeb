@@ -311,6 +311,13 @@
         </div>
     </a>
 
+    <div style="display: flex; align-items: center; gap: 8px;">
+        <a href="${pageContext.request.contextPath}/home" style="text-decoration: none; color: #334155; font-size: 13.5px; font-weight: 600; padding: 6px 12px; border-radius: 6px;">Trang Chủ</a>
+        <a href="${pageContext.request.contextPath}/video" style="text-decoration: none; color: #334155; font-size: 13.5px; font-weight: 600; padding: 6px 12px; border-radius: 6px;">Kênh Video (/video)</a>
+        <a href="${pageContext.request.contextPath}/admin/video/list" style="text-decoration: none; color: #334155; font-size: 13.5px; font-weight: 600; padding: 6px 12px; border-radius: 6px;">Quản Lý Videos</a>
+        <a href="${pageContext.request.contextPath}/admin/category/list" style="text-decoration: none; color: #2563eb; font-size: 13.5px; font-weight: 600; padding: 6px 12px; border-radius: 6px; background: #eff6ff;">Danh Mục Bán Hàng</a>
+    </div>
+
     <div class="user-nav">
         <span class="student-pill">Nguyễn Thanh Tâm | 24133052</span>
         <div class="user-profile-badge">
@@ -392,8 +399,8 @@
                                     <td style="text-align: center; font-weight: 600; color: #64748b;">${stt.index + 1}</td>
                                     <td style="text-align: center;">
                                         <c:choose>
-                                            <c:when test="${not empty cate.icon}">
-                                                <img src="${pageContext.request.contextPath}/image?fname=${cate.icon}" class="cate-img" alt="${cate.name}"/>
+                                            <c:when test="${not empty cate.iconUrl}">
+                                                <img src="${cate.iconUrl}" class="cate-img" alt="${cate.name}" style="width: 48px; height: 48px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;"/>
                                             </c:when>
                                             <c:otherwise>
                                                 <div class="no-img-box">🏷️</div>

@@ -26,15 +26,19 @@ public class UserDAOImpl extends DBConnection implements UserDAO {
     static {
         // Khởi tạo các tài khoản mẫu với MẬT KHẨU ĐÃ ĐƯỢC MÃ HÓA (BCrypt Hash) và STATUS = 1 (Đã kích hoạt)
         User u1 = new User("syber096@gmail.com", "syber096", "Nguyễn Thanh Tâm", PasswordUtil.hashPassword("thanhtam123"), null, 1, "0987654321", new Date(System.currentTimeMillis()));
+        u1.setId(1);
         u1.setStatus(1);
 
         User u2 = new User("thanhtam@gmail.com", "thanhtam", "Nguyễn Thanh Tâm", PasswordUtil.hashPassword("123"), null, 1, "0987654321", new Date(System.currentTimeMillis()));
+        u2.setId(2);
         u2.setStatus(1);
 
         User u3 = new User("tamnt@gmail.com", "tamnt", "Nguyễn Thanh Tâm", PasswordUtil.hashPassword("123"), null, 1, "0987654321", new Date(System.currentTimeMillis()));
+        u3.setId(3);
         u3.setStatus(1);
 
         User u4 = new User("admin@gmail.com", "admin", "Quản Trị Viên", PasswordUtil.hashPassword("123"), null, 1, "0901234567", new Date(System.currentTimeMillis()));
+        u4.setId(4);
         u4.setStatus(1);
 
         MEMORY_USERS.put(u1.getUserName(), u1);

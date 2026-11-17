@@ -11,14 +11,28 @@ public class DBConnection {
     private final String userID = "sa"; 
     private final String password = "123"; // Mật khẩu sa của SQL Server
 
+    private static volatile long lastFailTime = 0;
+
     public Connection getConnection() throws Exception {
+        // Nếu vừa thử kết nối thất bại trong vòng 10 giây qua, chuyển ngay sang fallback in-memory để web phản hồi tức thì
+        if (System.currentTimeMillis() - lastFailTime < 10000) {
+            throw new Exception("SQL Server connection cooldown (fallback in-memory)");
+        }
+
         String url = "jdbc:sqlserver://" + serverName + ":" + portNumber
-                + ";encrypt=true;trustServerCertificate=true;databaseName=" + dbName;
+                + ";loginTimeout=2;encrypt=true;trustServerCertificate=true;databaseName=" + dbName;
         if (instance != null && !instance.trim().isEmpty()) {
             url = "jdbc:sqlserver://" + serverName + ":" + portNumber + "\\" + instance
-                    + ";encrypt=true;trustServerCertificate=true;databaseName=" + dbName;
+                    + ";loginTimeout=2;encrypt=true;trustServerCertificate=true;databaseName=" + dbName;
         }
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        return DriverManager.getConnection(url, userID, password);
+        try {
+            Connection conn = DriverManager.getConnection(url, userID, password);
+            lastFailTime = 0;
+            return conn;
+        } catch (Exception e) {
+            lastFailTime = System.currentTimeMillis();
+            throw e;
+        }
     }
 }

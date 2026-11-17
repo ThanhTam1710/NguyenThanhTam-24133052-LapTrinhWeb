@@ -57,4 +57,14 @@ public class Category implements Serializable {
     public void setIcon(String icon) {
         this.icon = icon;
     }
+
+    public String getIconUrl() {
+        if (icon == null || icon.trim().isEmpty()) {
+            return "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=200";
+        }
+        if (icon.startsWith("http://") || icon.startsWith("https://")) {
+            return icon;
+        }
+        return "/24133052_NguyenThanhTam_CRUD/image?fname=" + icon;
+    }
 }
