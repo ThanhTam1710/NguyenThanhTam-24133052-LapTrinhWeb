@@ -3,10 +3,6 @@
 ### BỔ SUNG: KÍCH HOẠT OTP QUA EMAIL, HASH PASSWORD & QUÊN MẬT KHẨU
 
 > ## 🎯 THƯ MỤC BÀI TẬP CẦN CHẤM: `BT2_CRUD`
-> 👉 **Kính gửi Thầy:** Toàn bộ yêu cầu bài tập 02 (Kích hoạt OTP Email, Mật khẩu băm BCrypt, Đăng xuất, Quên mật khẩu OTP qua mail, Web Bán Hàng CRUD Danh mục) được thực hiện hoàn chỉnh trong thư mục: **`BT2_CRUD/`**.
-> * **Khi mở trên Eclipse / STS / VS Code:** Thầy chỉ cần chọn mở duy nhất thư mục **`BT2_CRUD`** (hoặc file `BT2_CRUD/pom.xml`) -> **Run on Server (Tomcat 10.1)**.
-> * *Lưu ý:* Thư mục `BT1_Login_Cookie_Session` và `BT_JPA_CRUD_Category` là các bài tập cũ trước đó lưu kèm theo trong repository.
-
 * **Trường:** Đại học Sư phạm Kỹ thuật TP.HCM (HCMUTE)
 * **Khoa:** Công Nghệ Thông Tin
 * **Giảng viên hướng dẫn:** ThS. Nguyễn Hữu Trung
