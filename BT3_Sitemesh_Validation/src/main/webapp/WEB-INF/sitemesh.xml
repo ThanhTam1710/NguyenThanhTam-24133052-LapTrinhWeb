@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cấu hình SiteMesh 3 Decorator - Sinh viên: Nguyễn Thanh Tâm (24133052) -->
+<sitemesh>
+    <!-- Template Bootstrap 5 trang trí chính cho toàn bộ trang web -->
+    <mapping path="/*" decorator="/decorators/web.jsp" />
+
+    <!-- Loại trừ các file đa phương tiện (ảnh, video) -->
+    <mapping path="/media*" excl="true" />
+    <mapping path="/image*" excl="true" />
+    <mapping path="/static/*" excl="true" />
+    <mapping path="/assets/*" excl="true" />
+</sitemesh>
