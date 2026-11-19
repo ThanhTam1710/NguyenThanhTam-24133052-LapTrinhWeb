@@ -1,8 +1,8 @@
 # HƯỚNG DẪN KHỞI CHẠY VÀ KIỂM THỬ HỆ THỐNG WEB
 ## BÀI TẬP LẬP TRÌNH WEB (WEBPR330479) - HCMUTE
 
-> ## 🎯 THƯ MỤC CẦN CHẤM BÀI: `BT2_CRUD`
-> 👉 Toàn bộ source code bài tập cần chấm (OTP Email, Hash Password, Quên mật khẩu, CRUD Bán Hàng) nằm trong thư mục: **`BT2_CRUD/`**.
+> ## 🎯 THƯ MỤC CẦN CHẤM BÀI MỚI NHẤT: `BT3_Sitemesh_Validation`
+> 👉 Toàn bộ source code Bài tập 03 (SiteMesh Decorator 3, Template Bootstrap 5, Form Validation đầy đủ 2 lớp Client/Server, Bảo mật AuthFilter) nằm trong thư mục: **`BT3_Sitemesh_Validation/`**.
 
 * **Sinh viên thực hiện:** Nguyễn Thanh Tâm
 * **Mã số sinh viên (MSSV):** 24133052
@@ -11,23 +11,23 @@
 
 ---
 
-## 1. CÁCH KHỞI CHẠY MÁY CHỦ TOMCAT ĐỂ MỞ WEB
+## 1. CÁCH KHỞI CHẠY MÁY CHỦ TOMCAT ĐỂ MỞ WEB (BÀI TẬP 03)
 
 ### Cách 1: Khởi chạy nhanh bằng Apache Tomcat có sẵn (Khuyên dùng)
 1. Mở cửa sổ **Terminal / PowerShell** hoặc **Command Prompt (cmd)**.
 2. Chạy lệnh sau để khởi động Tomcat:
    ```cmd
-   set JAVA_HOME=C:\Program Files\Java\jdk-24
+   set "JAVA_HOME=C:\Program Files\Java\jdk-24"
    D:\LapTrinhWeb\apache-tomcat-10.1.44\apache-tomcat-10.1.44\bin\catalina.bat run
    ```
 3. Sau khi màn hình console hiện thông báo `Deployment of web application archive has finished`, mở trình duyệt web bất kỳ và truy cập:
-   👉 **[http://localhost:8080/24133052_NguyenThanhTam_CRUD/](http://localhost:8080/24133052_NguyenThanhTam_CRUD/)**
+   👉 **[http://localhost:8080/24133052_NguyenThanhTam_BT3/login](http://localhost:8080/24133052_NguyenThanhTam_BT3/login)**
 
 ---
 
 ### Cách 2: Khởi chạy bằng Eclipse / Spring Tool Suite (STS) / VS Code
 1. Mở IDE (Eclipse, STS hoặc VS Code).
-2. Chọn **File -> Open Projects from File System...** và trỏ đến thư mục `BT2_CRUD`.
+2. Chọn **File -> Open Projects from File System...** và trỏ đến thư mục `BT3_Sitemesh_Validation`.
 3. Click chuột phải vào dự án -> **Run As -> Run on Server** -> Chọn **Apache Tomcat v10.1**.
 4. Ứng dụng sẽ tự động mở trang chủ tại trình duyệt tích hợp.
 
