@@ -56,7 +56,18 @@
   * *Client:* Validation bắt buộc tên/tiêu đề; hiển thị ảnh/video hiện tại trực quan.
   * *Server:* `CategoryEditController` và `VideoEditController` validate dữ liệu, tự động giữ ảnh/video cũ nếu không tải file mới.
 * **Bộ lọc bảo mật phân quyền (`AuthFilter.java`):**
-  * Chặn triệt để người dùng chưa đăng nhập khi truy cập `/admin/*` và `/video`, tự động chuyển hướng về `/login?error=auth_required` kèm thông báo cảnh báo.
+  * Chặn triệt để người dùng chưa đăng nhập khi truy cập `/admin/*`, `/video`, `/profile`, `/profile/*`, tự động chuyển hướng về `/login?error=auth_required` kèm thông báo cảnh báo.
+
+#### 3. Phần 3: Chức năng Hồ Sơ Cá Nhân (Profile) - Upload Cloudinary & Xác thực OTP Email
+* **Cập nhật thông tin toàn diện:** Cho phép người dùng chỉnh sửa **Họ và tên**, **Số điện thoại**, **Địa chỉ Email mới**, và **Ảnh đại diện**.
+* **Upload ảnh đại diện lên Cloudinary bằng Multipart (`CloudinaryUtil.java`):**
+  * Tích hợp thư viện đám mây `com.cloudinary:cloudinary-http44:1.36.0`.
+  * Servlet sử dụng annotation `@MultipartConfig` nhận tệp ảnh tải lên (JPG, PNG, WEBP), xử lý chuyển đổi nhị phân và upload an toàn lên máy chủ Cloudinary, lưu trữ trực tiếp đường dẫn HTTPS.
+* **Cơ chế xác thực mã OTP bảo mật 2 lớp:**
+  * Bất kỳ thay đổi hồ sơ nào cũng được lưu tạm thời vào Session và gửi mã OTP 6 số về email để xác nhận trước khi áp dụng vào CSDL.
+  * **Bảo vệ khi đổi Email:** Khi thay đổi địa chỉ email, hệ thống **bắt buộc người dùng phải nhập mật khẩu tài khoản hiện tại** để xác nhận danh tính, và mã OTP xác nhận sẽ được gửi trực tiếp đến **hộp thư Gmail mới**.
+  * **Tính năng Gửi lại mã OTP (Resend OTP):** Có nút *"Gửi lại mã OTP"* kèm đồng hồ **đếm ngược 30 giây** (`sessionStorage`) chống spam và giới hạn tối đa 3 lần gửi lại.
+* **Quản lý giao diện bằng SiteMesh 3:** Toàn bộ trang Hồ sơ (`/profile`) và trang Xác thực OTP (`/profile/verify-otp`) đều được trang trí đồng nhất thông qua SiteMesh Decorator Bootstrap 5.
 
 ---
 
@@ -68,6 +79,8 @@
 | **Đăng nhập** | `http://localhost:8080/24133052_NguyenThanhTam_BT3/login` | Form đăng nhập có Bootstrap validation, nút điền nhanh tài khoản |
 | **Đăng ký** | `http://localhost:8080/24133052_NguyenThanhTam_BT3/register` | Form đăng ký có validation regex, kiểm tra khớp mật khẩu |
 | **Quên mật khẩu** | `http://localhost:8080/24133052_NguyenThanhTam_BT3/forgot-password` | Gửi mã OTP khôi phục qua email |
+| **Hồ sơ cá nhân (Profile)** | `http://localhost:8080/24133052_NguyenThanhTam_BT3/profile` | Xem & sửa Họ tên, SĐT, Email, Upload ảnh Cloudinary (Yêu cầu mật khẩu khi đổi email) |
+| **Xác thực OTP Profile** | `http://localhost:8080/24133052_NguyenThanhTam_BT3/profile/verify-otp` | Xác thực mã OTP để cập nhật hồ sơ, có nút gửi lại mã đếm ngược 30s |
 | **Kênh Video (/video)** | `http://localhost:8080/24133052_NguyenThanhTam_BT3/video` | Phân trang đúng 6 video/trang theo đề bài (yêu cầu đăng nhập) |
 | **Chi tiết Video** | `http://localhost:8080/24133052_NguyenThanhTam_BT3/video/detail?id=VID01` | Phát video YouTube / MP4 và danh sách gợi ý |
 | **Quản lý Videos (CRUD)** | `http://localhost:8080/24133052_NguyenThanhTam_BT3/admin/video/list` | Danh sách video hệ thống (yêu cầu đăng nhập) |
@@ -91,18 +104,19 @@ NguyenThanhTam-24133052-LapTrinhWeb/
 │       │   ├── connection/DBConnection.java
 │       │   ├── filter/
 │       │   │   ├── MySiteMeshFilter.java   # Cấu hình SiteMesh 3 Decorator filter
-│       │   │   └── AuthFilter.java         # Bảo mật chặn chưa đăng nhập truy cập /admin/* và /video
-│       │   ├── controller/                 # Login, Register, ForgotPassword, VideoAdd/Edit, CategoryAdd/Edit...
+│       │   │   └── AuthFilter.java         # Bảo mật chặn chưa đăng nhập truy cập /admin/*, /video, /profile
+│       │   ├── controller/                 # Login, Register, ForgotPassword, ProfileServlet, VideoAdd/Edit, CategoryAdd/Edit...
 │       │   ├── model/                      # User.java, Category.java, Video.java
-│       │   ├── dao/ & service/             # Xử lý CSDL theo mô hình MVC 3 tầng
-│       │   └── util/                       # PasswordUtil (BCrypt), EmailUtil (SMTP OTP), Constant
+│       │   ├── dao/ & service/             # Xử lý CSDL theo mô hình MVC 3 tầng (bổ sung updateFullProfile)
+│       │   └── util/                       # PasswordUtil (BCrypt), EmailUtil (SMTP OTP), CloudinaryUtil (Upload Avatar)
 │       └── webapp/
 │           ├── WEB-INF/
-│           │   ├── web.xml                 # Khai báo SiteMesh Filter
+│           │   ├── web.xml                 # Khai báo SiteMesh Filter & AuthFilter
 │           │   └── sitemesh.xml            # Mapping decorator /* -> /decorators/web.jsp
 │           ├── decorators/
 │           │   └── web.jsp                 # Template Bootstrap 5 dùng chung toàn hệ thống
 │           └── view/                       # Các JSP con chỉ chứa body nội dung (SiteMesh tự trang trí)
+│               ├── profile.jsp, profile-verify-otp.jsp # Hồ sơ cá nhân & Xác thực OTP cập nhật
 │               ├── login.jsp, register.jsp, forgot-password.jsp, verify-otp.jsp, reset-password.jsp
 │               ├── add-category.jsp, edit-category.jsp, list-category.jsp
 │               ├── video-add.jsp, video-edit.jsp, video-list.jsp, video-user.jsp, video-detail.jsp

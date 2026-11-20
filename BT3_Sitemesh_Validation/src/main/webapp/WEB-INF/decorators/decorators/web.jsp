@@ -107,21 +107,23 @@
                                 <i class="bi bi-house-door me-1"></i> Trang Chủ
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/video">
-                                <i class="bi bi-collection-play me-1"></i> Video Của Tôi
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/admin/video/list">
-                                <i class="bi bi-camera-video me-1"></i> Quản Lý Videos
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/admin/category/list">
-                                <i class="bi bi-tags me-1"></i> Quản Lý Danh Mục
-                            </a>
-                        </li>
+                        <c:if test="${not empty sessionScope.account}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/video">
+                                    <i class="bi bi-collection-play me-1"></i> Video Của Tôi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/admin/video/list">
+                                    <i class="bi bi-camera-video me-1"></i> Quản Lý Videos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/admin/category/list">
+                                    <i class="bi bi-tags me-1"></i> Quản Lý Danh Mục
+                                </a>
+                            </li>
+                        </c:if>
                     </ul>
 
                     <!-- Khu vực người dùng / Đăng nhập -->
@@ -133,9 +135,18 @@
                         <c:choose>
                             <c:when test="${not empty sessionScope.account}">
                                 <div class="dropdown">
-                                    <button class="btn btn-outline-primary btn-sm dropdown-toggle fw-semibold rounded-pill px-3 py-1.5" type="button" data-bs-toggle="dropdown">
-                                        <i class="bi bi-person-circle me-1"></i>
-                                        ${not empty sessionScope.name ? sessionScope.name : sessionScope.account.userName}
+                                    <button class="btn btn-outline-primary btn-sm dropdown-toggle fw-semibold rounded-pill px-3 py-1.5 d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+                                        <c:choose>
+                                            <c:when test="${not empty sessionScope.account.avatar}">
+                                                <img src="${sessionScope.account.avatar.startsWith('http') ? sessionScope.account.avatar : pageContext.request.contextPath.concat('/media?fname=').concat(sessionScope.account.avatar)}"
+                                                     class="rounded-circle border" style="width: 24px; height: 24px; object-fit: cover;" alt="Avatar"
+                                                     onerror="this.style.display='none'">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-person-circle"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <span>${not empty sessionScope.name ? sessionScope.name : sessionScope.account.userName}</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3 mt-2">
                                         <li class="px-3 py-2 border-bottom">
@@ -143,8 +154,13 @@
                                             <small class="text-muted">@${sessionScope.account.userName}</small>
                                         </li>
                                         <li>
+                                            <a class="dropdown-item py-2" href="${pageContext.request.contextPath}/profile">
+                                                <i class="bi bi-person-gear me-2 text-primary"></i> Hồ sơ cá nhân (Profile)
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a class="dropdown-item py-2" href="${pageContext.request.contextPath}/video">
-                                                <i class="bi bi-film me-2 text-primary"></i> Kênh video cá nhân
+                                                <i class="bi bi-film me-2 text-info"></i> Kênh video cá nhân
                                             </a>
                                         </li>
                                         <li>
@@ -181,45 +197,11 @@
         <sitemesh:write property='body'/>
     </main>
 
-    <!-- 3. Footer Decorator Bootstrap -->
-    <footer class="footer-custom">
-        <div class="container-fluid px-lg-4">
-            <div class="row g-4 pb-3">
-                <div class="col-md-5">
-                    <div class="fw-bold fs-6 text-dark d-flex align-items-center mb-2">
-                        <i class="bi bi-layers-fill text-primary me-2"></i>
-                        Bài Tập 03: SiteMesh Decorator 3 & Form Validation
-                    </div>
-                    <p class="mb-2">
-                        Ứng dụng Java Servlet 6.0 trên nền tảng Apache Tomcat 10.1, tích hợp thư viện SiteMesh 3 để trang trí giao diện Bootstrap 5 tự động và hoàn thiện hệ thống kiểm tra tính hợp lệ dữ liệu (Validation) ở cả 2 phía Client và Server.
-                    </p>
-                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle">SiteMesh 3.3.0</span>
-                    <span class="badge bg-success-subtle text-success border border-success-subtle ms-1">Bootstrap 5.3.3</span>
-                    <span class="badge bg-info-subtle text-info border border-info-subtle ms-1">Jakarta EE 10</span>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="fw-bold text-dark mb-2">Chức Năng Đã Validation</div>
-                    <ul class="list-unstyled mb-0">
-                        <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Đăng Nhập (Login Form)</li>
-                        <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Đăng Ký Tài Khoản (Register Form)</li>
-                        <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Quên Mật Khẩu & OTP (Forgot Form)</li>
-                        <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Thêm Mới Danh Mục & Video (Insert Form)</li>
-                        <li class="mb-1"><i class="bi bi-check2-circle text-success me-1"></i> Chỉnh Sửa Dữ Liệu (Edit Form)</li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 text-md-end">
-                    <div class="fw-bold text-dark mb-1">Trường Đại Học Sư Phạm Kỹ Thuật TP.HCM (HCMUTE)</div>
-                    <div class="mb-1">Môn học: <b>Lập trình Web (WEBPR330479)</b></div>
-                    <div class="mb-1">Giảng viên hướng dẫn: <b>ThS. Nguyễn Hữu Trung</b></div>
-                    <div class="text-primary fw-semibold">Sinh viên: Nguyễn Thanh Tâm - MSSV: 24133052</div>
-                </div>
-            </div>
-
-            <div class="pt-3 border-top text-center text-muted" style="font-size: 12.5px;">
-                © 2026 Fashion Showcase. Bản quyền bài tập thuộc về Nguyễn Thanh Tâm (24133052) - HCMUTE.
-            </div>
+    <!-- 3. Footer Decorator Bootstrap Tối Giản -->
+    <footer class="py-3 border-top bg-white mt-auto">
+        <div class="container text-center text-muted" style="font-size: 13px;">
+            <div>© 2026 <strong>Fashion Showcase</strong> &bull; Đồ án Lập Trình Web - HCMUTE</div>
+            <div class="small mt-1 text-secondary">Sinh viên: <b>Nguyễn Thanh Tâm</b> (MSSV: <b>24133052</b>) &bull; GVHD: <b>ThS. Nguyễn Hữu Trung</b></div>
         </div>
     </footer>
 

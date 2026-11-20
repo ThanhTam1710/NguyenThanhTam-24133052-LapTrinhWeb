@@ -81,6 +81,13 @@
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
+
+		<!-- Cloudinary Java SDK cho upload file anh bang multipart -->
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http44</artifactId>
+			<version>1.36.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -151,4 +151,96 @@ public class UserServiceImpl implements UserService {
     public boolean checkExistPhone(String phone) {
         return userDao.checkExistPhone(phone);
     }
+
+    @Override
+    public boolean updateProfile(User user) {
+        if (user == null || user.getUserName() == null) {
+            return false;
+        }
+        userDao.updateProfile(user);
+        return true;
+    }
+
+    @Override
+    public boolean sendUpdateEmailOtp(String username, String newEmail) {
+        if (username == null || newEmail == null) {
+            return false;
+        }
+        User user = userDao.get(username);
+        if (user == null) {
+            return false;
+        }
+
+        // Sinh mã OTP 6 số
+        String otp = String.format("%06d", new Random().nextInt(999999));
+        Timestamp expiry = new Timestamp(System.currentTimeMillis() + 5 * 60 * 1000); // 5 phút
+
+        userDao.updateOtp(user.getUserName(), otp, expiry);
+        EmailUtil.sendOtpEmail(newEmail, otp, "update_email");
+        return true;
+    }
+
+    @Override
+    public boolean verifyAndUpdateEmail(String username, String newEmail, String otp) {
+        if (username == null || newEmail == null || otp == null) {
+            return false;
+        }
+        User user = userDao.get(username);
+        if (user == null || user.getCode() == null) {
+            return false;
+        }
+
+        // Kiểm tra mã OTP khớp và còn hạn
+        if (!otp.trim().equals(user.getCode().trim())) {
+            return false;
+        }
+        if (user.getOtpExpiry() != null && System.currentTimeMillis() > user.getOtpExpiry().getTime()) {
+            return false; // Hết hạn
+        }
+
+        // Hợp lệ -> Cập nhật email mới
+        userDao.updateEmail(username, newEmail);
+        return true;
+    }
+
+    @Override
+    public boolean sendProfileOtp(String username, String targetEmail) {
+        if (username == null || targetEmail == null) {
+            return false;
+        }
+        User user = userDao.get(username);
+        if (user == null) {
+            return false;
+        }
+
+        // Sinh mã OTP 6 số
+        String otp = String.format("%06d", new Random().nextInt(999999));
+        Timestamp expiry = new Timestamp(System.currentTimeMillis() + 5 * 60 * 1000); // 5 phút
+
+        userDao.updateOtp(user.getUserName(), otp, expiry);
+        EmailUtil.sendOtpEmail(targetEmail, otp, "update_profile");
+        return true;
+    }
+
+    @Override
+    public boolean verifyAndUpdateFullProfile(User user, String otp) {
+        if (user == null || user.getUserName() == null || otp == null) {
+            return false;
+        }
+        User dbUser = userDao.get(user.getUserName());
+        if (dbUser == null || dbUser.getCode() == null) {
+            return false;
+        }
+
+        // Kiểm tra mã OTP khớp và còn hạn
+        if (!otp.trim().equals(dbUser.getCode().trim())) {
+            return false;
+        }
+        if (dbUser.getOtpExpiry() != null && System.currentTimeMillis() > dbUser.getOtpExpiry().getTime()) {
+            return false;
+        }
+
+        userDao.updateFullProfile(user);
+        return true;
+    }
 }

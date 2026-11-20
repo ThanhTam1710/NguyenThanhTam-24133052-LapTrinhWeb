@@ -18,4 +18,11 @@ public interface UserService {
     boolean resendOtp(String usernameOrEmail, String actionType);
     boolean sendForgotPasswordOtp(String emailOrUsername);
     boolean resetPassword(String emailOrUsername, String otp, String newPassword);
+
+    // Cập nhật thông tin Profile & Đổi email kèm OTP
+    boolean updateProfile(User user);
+    boolean sendUpdateEmailOtp(String username, String newEmail);
+    boolean verifyAndUpdateEmail(String username, String newEmail, String otp);
+    boolean sendProfileOtp(String username, String targetEmail);
+    boolean verifyAndUpdateFullProfile(User user, String otp);
 }

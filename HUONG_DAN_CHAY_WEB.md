@@ -105,9 +105,20 @@
 
 ---
 
-### 🔹 Kịch bản 6: Đăng nhập Cookie (30s) & Session Profile
-* **Đăng nhập Cookie:** `http://localhost:8080/24133052_NguyenThanhTam_CRUD/login-cookie` -> Lưu username vào Cookie tồn tại đúng 30 giây rồi tự hủy.
-* **Đăng nhập Session:** `http://localhost:8080/24133052_NguyenThanhTam_CRUD/login-session` -> Lưu phiên với `HttpSession` và xem trang thông tin cá nhân tại `/profile`.
+### 🔹 Kịch bản 6: Chỉnh sửa Hồ sơ cá nhân (Profile), Upload Cloudinary & Xác thực OTP (Phần 3)
+1. **Truy cập:** Đăng nhập tài khoản `syber096` -> Bấm vào tên người dùng trên góc phải Navbar -> Chọn **"Hồ sơ cá nhân (Profile)"** (hoặc truy cập URL: `http://localhost:8080/24133052_NguyenThanhTam_BT3/profile`).
+2. **Cập nhật thông tin thông thường (Họ tên, SĐT, Ảnh đại diện):**
+   * Sửa Họ và tên, SĐT hoặc chọn file ảnh mới (JPG, PNG, WEBP).
+   * File ảnh được tải trực tiếp lên đám mây **Cloudinary** bằng Multipart Servlet.
+   * Nhấn **"Lưu Cập Nhật Hồ Sơ"** -> Hệ thống chuyển sang trang **`/profile/verify-otp`** và gửi mã OTP 6 số về email hiện tại của tài khoản.
+   * Nhập 6 chữ số OTP -> Hồ sơ được cập nhật toàn bộ thành công.
+3. **Đổi sang địa chỉ Email mới (Yêu cầu Mật khẩu & OTP Gmail mới):**
+   * Nhập địa chỉ email mới tại ô **Địa chỉ Email**.
+   * Ô **"Mật khẩu tài khoản"** sẽ tự động kích hoạt bắt buộc nhập.
+   * Nhập mật khẩu hiện tại (ví dụ: `thanhtam123`) -> Bấm **"Lưu Cập Nhật Hồ Sơ"**.
+   * Hệ thống kiểm tra mật khẩu chính xác và tự động gửi mã OTP 6 số đến **hộp thư Gmail mới**.
+   * Tại trang xác nhận OTP, có nút **"Gửi lại mã OTP"** kèm **đồng hồ đếm ngược 30 giây** chống spam.
+   * Nhập mã OTP từ Gmail mới -> Email và toàn bộ hồ sơ được cập nhật hoàn tất.
 
 ---
 

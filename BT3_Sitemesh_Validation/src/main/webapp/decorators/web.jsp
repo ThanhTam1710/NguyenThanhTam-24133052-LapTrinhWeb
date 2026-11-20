@@ -135,9 +135,18 @@
                         <c:choose>
                             <c:when test="${not empty sessionScope.account}">
                                 <div class="dropdown">
-                                    <button class="btn btn-outline-primary btn-sm dropdown-toggle fw-semibold rounded-pill px-3 py-1.5" type="button" data-bs-toggle="dropdown">
-                                        <i class="bi bi-person-circle me-1"></i>
-                                        ${not empty sessionScope.name ? sessionScope.name : sessionScope.account.userName}
+                                    <button class="btn btn-outline-primary btn-sm dropdown-toggle fw-semibold rounded-pill px-3 py-1.5 d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+                                        <c:choose>
+                                            <c:when test="${not empty sessionScope.account.avatar}">
+                                                <img src="${sessionScope.account.avatar.startsWith('http') ? sessionScope.account.avatar : pageContext.request.contextPath.concat('/media?fname=').concat(sessionScope.account.avatar)}"
+                                                     class="rounded-circle border" style="width: 24px; height: 24px; object-fit: cover;" alt="Avatar"
+                                                     onerror="this.style.display='none'">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <i class="bi bi-person-circle"></i>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <span>${not empty sessionScope.name ? sessionScope.name : sessionScope.account.userName}</span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 rounded-3 mt-2">
                                         <li class="px-3 py-2 border-bottom">
@@ -145,8 +154,13 @@
                                             <small class="text-muted">@${sessionScope.account.userName}</small>
                                         </li>
                                         <li>
+                                            <a class="dropdown-item py-2" href="${pageContext.request.contextPath}/profile">
+                                                <i class="bi bi-person-gear me-2 text-primary"></i> Hồ sơ cá nhân (Profile)
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a class="dropdown-item py-2" href="${pageContext.request.contextPath}/video">
-                                                <i class="bi bi-film me-2 text-primary"></i> Kênh video cá nhân
+                                                <i class="bi bi-film me-2 text-info"></i> Kênh video cá nhân
                                             </a>
                                         </li>
                                         <li>

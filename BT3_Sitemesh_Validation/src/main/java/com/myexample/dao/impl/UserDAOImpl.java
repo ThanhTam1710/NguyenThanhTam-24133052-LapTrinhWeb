@@ -257,6 +257,95 @@ public class UserDAOImpl extends DBConnection implements UserDAO {
     }
 
     @Override
+    public void updateProfile(User user) {
+        if (user == null || user.getUserName() == null) {
+            return;
+        }
+
+        String sql = "UPDATE [User] SET fullname = ?, phone = ?, avatar = ? WHERE username = ?";
+        try (Connection conn = super.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, user.getFullName());
+            ps.setString(2, user.getPhone());
+            ps.setString(3, user.getAvatar());
+            ps.setString(4, user.getUserName());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            // Log fallback
+            System.err.println("[UserDAOImpl] updateProfile SQL error, using memory fallback: " + e.getMessage());
+        }
+
+        // Cập nhật bộ nhớ Fallback
+        User u = get(user.getUserName());
+        if (u != null) {
+            u.setFullName(user.getFullName());
+            u.setPhone(user.getPhone());
+            if (user.getAvatar() != null) {
+                u.setAvatar(user.getAvatar());
+            }
+            MEMORY_USERS.put(u.getUserName(), u);
+        }
+    }
+
+    @Override
+    public void updateEmail(String username, String newEmail) {
+        if (username == null || newEmail == null) {
+            return;
+        }
+
+        String sql = "UPDATE [User] SET email = ?, code = NULL, otp_expiry = NULL WHERE username = ?";
+        try (Connection conn = super.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, newEmail);
+            ps.setString(2, username);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println("[UserDAOImpl] updateEmail SQL error, using memory fallback: " + e.getMessage());
+        }
+
+        User u = get(username);
+        if (u != null) {
+            u.setEmail(newEmail);
+            u.setCode(null);
+            u.setOtpExpiry(null);
+            MEMORY_USERS.put(u.getUserName(), u);
+        }
+    }
+
+    @Override
+    public void updateFullProfile(User user) {
+        if (user == null || user.getUserName() == null) {
+            return;
+        }
+
+        String sql = "UPDATE [User] SET fullname = ?, phone = ?, email = ?, avatar = ?, code = NULL, otp_expiry = NULL WHERE username = ?";
+        try (Connection conn = super.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, user.getFullName());
+            ps.setString(2, user.getPhone());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getAvatar());
+            ps.setString(5, user.getUserName());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println("[UserDAOImpl] updateFullProfile SQL error, using memory fallback: " + e.getMessage());
+        }
+
+        User u = get(user.getUserName());
+        if (u != null) {
+            u.setFullName(user.getFullName());
+            u.setPhone(user.getPhone());
+            u.setEmail(user.getEmail());
+            if (user.getAvatar() != null) {
+                u.setAvatar(user.getAvatar());
+            }
+            u.setCode(null);
+            u.setOtpExpiry(null);
+            MEMORY_USERS.put(u.getUserName(), u);
+        }
+    }
+
+    @Override
     public boolean checkExistEmail(String email) {
         if (email == null) return false;
         return getByEmail(email) != null;

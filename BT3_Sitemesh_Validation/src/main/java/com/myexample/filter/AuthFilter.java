@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
  * Tự động chuyển hướng về trang /login
  * Sinh viên: Nguyễn Thanh Tâm - MSSV: 24133052
  */
-@WebFilter(filterName = "AuthFilter", urlPatterns = {"/admin/*", "/video"})
+@WebFilter(filterName = "AuthFilter", urlPatterns = {"/admin/*", "/video", "/profile", "/profile/*"})
 public class AuthFilter implements Filter {
 
     @Override

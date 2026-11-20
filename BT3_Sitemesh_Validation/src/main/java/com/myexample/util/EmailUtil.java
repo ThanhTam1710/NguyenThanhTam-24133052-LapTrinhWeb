@@ -43,6 +43,12 @@ public class EmailUtil {
         if ("register".equalsIgnoreCase(actionType)) {
             subject += "Mã OTP kích hoạt tài khoản của bạn";
             purpose = "kích hoạt tài khoản mới đăng ký";
+        } else if ("update_email".equalsIgnoreCase(actionType)) {
+            subject += "Mã OTP xác thực thay đổi Email mới";
+            purpose = "xác nhận cập nhật địa chỉ Email mới cho tài khoản của bạn";
+        } else if ("update_profile".equalsIgnoreCase(actionType)) {
+            subject += "Mã OTP xác nhận cập nhật thông tin hồ sơ cá nhân";
+            purpose = "xác nhận cập nhật thông tin hồ sơ tài khoản của bạn (Họ tên, SĐT, Email, Ảnh đại diện)";
         } else {
             subject += "Mã OTP đặt lại mật khẩu";
             purpose = "đặt lại mật khẩu cho tài khoản của bạn";

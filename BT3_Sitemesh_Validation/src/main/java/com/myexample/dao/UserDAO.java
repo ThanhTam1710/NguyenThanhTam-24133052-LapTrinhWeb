@@ -17,4 +17,9 @@ public interface UserDAO {
     void updateStatus(String username, int status);
     void updateOtp(String username, String otp, Timestamp expiry);
     boolean verifyOtp(String username, String otp);
+
+    // Chức năng Cập nhật Profile & Xác thực Email mới
+    void updateProfile(User user);
+    void updateEmail(String username, String newEmail);
+    void updateFullProfile(User user);
 }
